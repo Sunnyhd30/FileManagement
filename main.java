@@ -8,6 +8,7 @@ TO DO
 import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 class DupeCheckerCMD {
 	public static void main (String[] args) {
@@ -23,15 +24,14 @@ class DupeCheckerCMD {
 
 		try 
 		{
-			if (args[0] != null) 
+			if ((args.length >= 1))
 			{
-				
-				if (args[0] == "-Help" || args[0] == "-h")
+				if (args[0].equals("-Help") || args[0].equals("-h") || args[0].equals("-H"))
 				{
 					//Print out the help features
-					System.out.println ("Moron!");
+					System.out.println ("TO DO: Put a help menu in place");
 				}
-				else if (args[1] != null)
+				else if (args.length > 1)
 				{
 					String[] fileNameExt = new String[1];
 					String[][] duplicateFiles = new String[1][4];
@@ -65,6 +65,40 @@ class DupeCheckerCMD {
 							}
 							System.out.println("100% match: " + count100);
 							System.out.println("50% match: " + count50);
+
+							System.out.println("\nDo you want to process the duplicates? Y or N");
+							Scanner in = new Scanner(System.in);
+							String userInput = in.nextLine();
+							if (userInput.equals("Y") || (userInput.equals("y")))	
+							{
+								for (int x = 0; x < duplicateFiles.length; x++)
+								{
+									if (duplicateFiles[x][3].equals("100%") && duplicateFiles[x][2].equals("D"))	
+									{
+										//Delete code
+										System.out.println("File to keep: " + duplicateFiles[x][1]);
+										System.out.println("File to be deleted: " + duplicateFiles[x][1]);
+										System.out.println("Delete? Y or N");
+										in = new Scanner(System.in);
+										userInput = in.nextLine();
+										if (userInput.equals("Y") || userInput.equals("y"))
+										{
+											File fileToBeDeleted = new File(duplicateFiles[x][1]);
+											fileToBeDeleted.delete();
+										}
+										userInput = "";
+									}
+									else if (duplicateFiles[x][3].equals("50%") && duplicateFiles[x][2].equals("D"))	
+									{
+										//Delete code
+									}
+								}
+							}
+							else
+							{
+								System.out.println("Good Bye!");
+								System.exit(1);
+							}
 						}
 					}
 					else
@@ -83,8 +117,8 @@ class DupeCheckerCMD {
 		} 
 		catch (IndexOutOfBoundsException e) 
 		{
-			System.out.println("Proper Usage is: {options} file path name.  Type java DupeCheckerCMD -Help for additional information");
-			//e.printStackTrace();
+			e.printStackTrace(System.out);
+			System.out.println("IndexOutofBounds: Proper Usage is: {options} file path name.  Type java DupeCheckerCMD -Help for additional information");
 			System.exit(1);
 		}
 	}
