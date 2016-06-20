@@ -1,9 +1,9 @@
 /*
 TO DO
 1. Figure out the fize sizes to be saved - DONE
-2. Figure out a simpler way to compare file names
-3. Flatten file directories or move names by artist
-4. Delete duplicate files
+2. Figure out a simpler way to compare file names - DONE
+3. Flatten file directories or move names by artist - TO DO
+4. Delete duplicate files - DONE
 */
 import java.io.*;
 import java.util.List;
@@ -30,6 +30,7 @@ class DupeCheckerCMD {
 				{
 					//Print out the help features
 					System.out.println ("TO DO: Put a help menu in place");
+					System.out.println("")
 				}
 				else if (args.length > 1)
 				{
