@@ -30,7 +30,7 @@ class DupeCheckerCMD {
 				{
 					//Print out the help features
 					System.out.println ("TO DO: Put a help menu in place");
-					System.out.println("")
+					System.out.println("");
 				}
 				else if (args.length > 1)
 				{
